@@ -43,13 +43,6 @@ const sendPostRequest = async () => {
   console.log(await result.json());
 }
 
-
-function getRandomInt(min: number, max: number): number {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 const AppComponent = observer(() => {
   const navigate = useNavigate();
   
@@ -85,12 +78,6 @@ const AppComponent = observer(() => {
     console.log("User2 changed");
   }, [user2])
 
-  const handlerButton = () => {
-    const user =  new User();
-    user.data.first_name = 'vlad';
-    setUser1(user);
-    console.log("Clicked");
-  }
 
   const handleFlag = () => {
     setFlag(currentFlag => !currentFlag)
@@ -99,25 +86,6 @@ const AppComponent = observer(() => {
   const handleMobx = () => {
     difficultTimer.increase();
   }
-
-  const handleAddData = () => {
-    const data = new Data();
-    data.email = "vlad.vlad@google.com";
-    data.id = getRandomInt(0, 10000000);
-    data.first_name = "Vlad";
-    data.avatar = "adkasd;kl";
-    data.last_name = "VVVV"
-
-    difficultTimer.addData(data);
-  }
-
-  const handleAdd = (data: Data) => {
-    difficultTimer.addToBasket(data);
-  }
-
-  const handleRemove = (data: Data) => {
-    difficultTimer.removeFromBasket(data.id);
-  } 
 
   const handlerNavigate = () => {
     localStorage.setItem("key_basket", JSON.stringify([1, 2, 3]));
